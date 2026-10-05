@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Our Little Story ❤️</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{min-height:100vh;overflow:hidden;background:radial-gradient(circle at 50% 30%,#71343e 0%,#4c2029 45%,#260d14 100%);color:white;font-family:Poppins,sans-serif}
+.app{width:100%;min-height:100vh;position:relative;display:flex;justify-content:center;align-items:center}
+.hearts{position:fixed;inset:0;overflow:hidden;pointer-events:none}
+.heart{position:absolute;bottom:-50px;color:rgba(255,133,151,.45);font-size:20px;animation:floatUp linear infinite;filter:blur(.5px)}
+@keyframes floatUp{0%{transform:translateY(0) rotate(0);opacity:0}15%{opacity:1}100%{transform:translateY(-110vh) translateX(var(--move)) rotate(25deg);opacity:0}}
+.progress{position:fixed;top:18px;left:50%;transform:translateX(-50%);z-index:20;display:flex;align-items:center;gap:8px;font-size:13px;letter-spacing:4px;color:rgba(255,255,255,.55)}
+.dots{display:flex;gap:5px}.dot{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.2)}.dot.active{background:white;box-shadow:0 0 10px white}
+.card{width:min(90%,520px);min-height:570px;padding:55px 28px 35px;border:1px solid rgba(255,255,255,.15);border-radius:30px;background:linear-gradient(135deg,rgba(255,255,255,.075),rgba(255,255,255,.025));backdrop-filter:blur(15px);-webkit-backdrop-filter:blur(15px);box-shadow:0 30px 80px rgba(0,0,0,.35),inset 0 1px rgba(255,255,255,.08);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;position:relative;z-index:5;animation:cardIn .7s ease}
+@keyframes cardIn{from{opacity:0;transform:scale(.94) translateY(20px)}to{opacity:1;transform:scale(1) translateY(0)}}
+.small-text{font-family:"Dancing Script",cursive;font-size:27px;line-height:1.3;opacity:.9;margin-bottom:30px}
+.question{font-family:"Dancing Script",cursive;font-size:clamp(38px,8vw,58px);line-height:1.12;font-weight:600;text-shadow:0 4px 15px rgba(0,0,0,.25)}
+.emoji{font-size:55px;margin:22px 0;animation:heartbeat 1.4s infinite}
+@keyframes heartbeat{0%,100%{transform:scale(1)}50%{transform:scale(1.15)}}
+.buttons{display:flex;flex-wrap:wrap;justify-content:center;gap:15px;margin-top:25px}
+button{border:none;outline:none;min-width:180px;padding:17px 28px;border-radius:50px;background:#ff6574;color:white;font-size:16px;font-family:Poppins,sans-serif;cursor:pointer;box-shadow:0 8px 25px rgba(255,75,95,.25);transition:.25s ease}
+button:hover{transform:translateY(-4px) scale(1.03);box-shadow:0 12px 35px rgba(255,75,95,.45)}
+button:active{transform:scale(.95)}
+.outline{background:transparent;border:1px solid rgba(255,255,255,.25);box-shadow:none}
+.final-title{font-family:"Dancing Script",cursive;font-size:48px;margin-bottom:20px}
+.final-text{font-family:"Dancing Script",cursive;font-size:27px;line-height:1.5}
+.music{margin-top:30px;padding:12px 30px;border:1px solid rgba(255,255,255,.5);border-radius:50px;background:rgba(255,255,255,.04);font-size:14px}
+.credit{position:fixed;bottom:18px;left:20px;z-index:30;font-size:13px;opacity:.65}.credit span{display:block;font-size:25px}
+@media(max-width:600px){.card{width:90%;min-height:540px;padding:45px 20px 30px}.small-text{font-size:23px}.question{font-size:42px}.buttons{width:100%}button{width:90%}.final-title{font-size:43px}.final-text{font-size:24px}}
+</style>
+</head>
+<body>
+<div class="app">
+<div class="hearts" id="hearts"></div>
+<div class="progress"><span id="pageNumber">01 / 06</span><div class="dots"><span class="dot active"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></div></div>
+<div class="card" id="card"></div>
+<div class="credit"><span>♡</span>Made with love</div>
+</div>
+<script>
+const pages=[
+{small:"Hey... I have something to ask you... ❤️",title:"Can I ask you<br>something?",emoji:"💗",buttons:[["Yes ❤️","next"],["Of course 🥺","next"]]},
+{small:"Okay... let's start with something simple...",title:"Do you enjoy<br>talking to me?",emoji:"💬",buttons:[["Yes ❤️","next"],["Obviously 🥺","next"]]},
+{small:"Be honest with me...",title:"Do I make<br>you smile?",emoji:"😊",buttons:[["Yes ❤️","next"],["Always 🥺","next"]]},
+{small:"One last little question...",title:"Do you think<br>we are special?",emoji:"✨",buttons:[["Yes ❤️","next"],["Definitely 🥺","next"]]},
+{small:"Ek secret batana? 🤫",title:"Will you stay<br>with me?",emoji:"💞",buttons:[["Yes ❤️","next"],["Of Course 🥺","next"],["No 🙈","run"]]}
+];
+let currentPage=0;
+const card=document.getElementById("card"),pageNumber=document.getElementById("pageNumber"),dots=document.querySelectorAll(".dot");
+function showPage(index){
+ currentPage=index;card.style.animation="none";void card.offsetWidth;card.style.animation="cardIn .7s ease";
+ pageNumber.innerText=String(index+1).padStart(2,"0")+" / 06";
+ dots.forEach((d,i)=>d.classList.toggle("active",i<=index));
+ if(index>=pages.length){showFinal();return}
+ const p=pages[index];
+ card.innerHTML=`<div class="small-text">${p.small}</div><div class="question">${p.title}</div><div class="emoji">${p.emoji}</div><div class="buttons">${p.buttons.map(b=>`<button class="${b[1]==="run"?"outline":""}" onclick="${b[1]==="next"?"nextPage()":"runAway(this)"}">${b[0]}</button>`).join("")}</div>`;
+}
+function nextPage(){createBurst();setTimeout(()=>showPage(currentPage+1),250)}
+function runAway(button){
+ button.style.position="fixed";
+ button.style.left=Math.max(20,Math.random()*(innerWidth-button.offsetWidth-20))+"px";
+ button.style.top=Math.max(20,Math.random()*(innerHeight-button.offsetHeight-20))+"px";
+ button.innerText=["Are you sure? 🥺","Really? 😭","Think again ❤️","Nope 😌","Try again 😏"][Math.floor(Math.random()*5)];
+}
+function showFinal(){
+ pageNumber.innerText="06 / 06";dots.forEach(d=>d.classList.add("active"));
+ card.innerHTML=`<div class="emoji">💕✨</div><div class="final-title">I knew it... ❤️</div><div class="final-text">From random conversations...<br>...to becoming someone incredibly special.<br><br>Our story starts here. ❤️✨</div><div class="music">♪ Playing for us ♪</div>`;
+ for(let i=0;i<25;i++)setTimeout(createBurst,i*80);
+}
+const hearts=document.getElementById("hearts");
+function createHeart(){
+ const h=document.createElement("div");h.className="heart";h.innerHTML=Math.random()>.3?"♥":"♡";
+ h.style.left=Math.random()*100+"%";h.style.fontSize=12+Math.random()*25+"px";h.style.animationDuration=6+Math.random()*8+"s";
+ h.style.setProperty("--move",Math.random()*180-90+"px");hearts.appendChild(h);setTimeout(()=>h.remove(),15000);
+}
+setInterval(createHeart,450);
+function createBurst(){
+ for(let i=0;i<8;i++){
+  const h=document.createElement("div");h.innerHTML="♥";h.style.cssText="position:fixed;left:50%;top:50%;z-index:100;color:#ff7182;font-size:"+(14+Math.random()*18)+"px;pointer-events:none";
+  const a=Math.random()*Math.PI*2,d=70+Math.random()*120,x=Math.cos(a)*d,y=Math.sin(a)*d;
+  h.animate([{transform:"translate(-50%,-50%) scale(0)",opacity:1},{transform:`translate(calc(-50% + ${x}px),calc(-50% + ${y}px)) scale(1.4)`,opacity:0}],{duration:900,easing:"ease-out"});
+  document.body.appendChild(h);setTimeout(()=>h.remove(),950);
+ }
+}
+showPage(0);
+</script>
+</body>
+</html>
