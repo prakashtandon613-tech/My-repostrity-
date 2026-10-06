@@ -3,90 +3,186 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Our Little Story ❤️</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<title>For Niti ❤️</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{min-height:100vh;overflow:hidden;background:radial-gradient(circle at 50% 30%,#71343e 0%,#4c2029 45%,#260d14 100%);color:white;font-family:Poppins,sans-serif}
-.app{width:100%;min-height:100vh;position:relative;display:flex;justify-content:center;align-items:center}
-.hearts{position:fixed;inset:0;overflow:hidden;pointer-events:none}
-.heart{position:absolute;bottom:-50px;color:rgba(255,133,151,.45);font-size:20px;animation:floatUp linear infinite;filter:blur(.5px)}
-@keyframes floatUp{0%{transform:translateY(0) rotate(0);opacity:0}15%{opacity:1}100%{transform:translateY(-110vh) translateX(var(--move)) rotate(25deg);opacity:0}}
-.progress{position:fixed;top:18px;left:50%;transform:translateX(-50%);z-index:20;display:flex;align-items:center;gap:8px;font-size:13px;letter-spacing:4px;color:rgba(255,255,255,.55)}
-.dots{display:flex;gap:5px}.dot{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.2)}.dot.active{background:white;box-shadow:0 0 10px white}
-.card{width:min(90%,520px);min-height:570px;padding:55px 28px 35px;border:1px solid rgba(255,255,255,.15);border-radius:30px;background:linear-gradient(135deg,rgba(255,255,255,.075),rgba(255,255,255,.025));backdrop-filter:blur(15px);-webkit-backdrop-filter:blur(15px);box-shadow:0 30px 80px rgba(0,0,0,.35),inset 0 1px rgba(255,255,255,.08);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;position:relative;z-index:5;animation:cardIn .7s ease}
-@keyframes cardIn{from{opacity:0;transform:scale(.94) translateY(20px)}to{opacity:1;transform:scale(1) translateY(0)}}
-.small-text{font-family:"Dancing Script",cursive;font-size:27px;line-height:1.3;opacity:.9;margin-bottom:30px}
-.question{font-family:"Dancing Script",cursive;font-size:clamp(38px,8vw,58px);line-height:1.12;font-weight:600;text-shadow:0 4px 15px rgba(0,0,0,.25)}
-.emoji{font-size:55px;margin:22px 0;animation:heartbeat 1.4s infinite}
-@keyframes heartbeat{0%,100%{transform:scale(1)}50%{transform:scale(1.15)}}
-.buttons{display:flex;flex-wrap:wrap;justify-content:center;gap:15px;margin-top:25px}
-button{border:none;outline:none;min-width:180px;padding:17px 28px;border-radius:50px;background:#ff6574;color:white;font-size:16px;font-family:Poppins,sans-serif;cursor:pointer;box-shadow:0 8px 25px rgba(255,75,95,.25);transition:.25s ease}
-button:hover{transform:translateY(-4px) scale(1.03);box-shadow:0 12px 35px rgba(255,75,95,.45)}
-button:active{transform:scale(.95)}
-.outline{background:transparent;border:1px solid rgba(255,255,255,.25);box-shadow:none}
-.final-title{font-family:"Dancing Script",cursive;font-size:48px;margin-bottom:20px}
-.final-text{font-family:"Dancing Script",cursive;font-size:27px;line-height:1.5}
-.music{margin-top:30px;padding:12px 30px;border:1px solid rgba(255,255,255,.5);border-radius:50px;background:rgba(255,255,255,.04);font-size:14px}
-.credit{position:fixed;bottom:18px;left:20px;z-index:30;font-size:13px;opacity:.65}.credit span{display:block;font-size:25px}
-@media(max-width:600px){.card{width:90%;min-height:540px;padding:45px 20px 30px}.small-text{font-size:23px}.question{font-size:42px}.buttons{width:100%}button{width:90%}.final-title{font-size:43px}.final-text{font-size:24px}}
+html,body{width:100%;height:100%;overflow:hidden}
+body{font-family:Poppins,sans-serif;color:white;background:radial-gradient(circle at 50% 20%,#5c183f 0%,transparent 35%),radial-gradient(circle at 20% 80%,#35133b 0%,transparent 40%),linear-gradient(135deg,#100817,#210d1f,#09050d)}
+.stars{position:fixed;inset:0;overflow:hidden;pointer-events:none;z-index:0}
+.star{position:absolute;width:2px;height:2px;background:white;border-radius:50%;opacity:.7;animation:twinkle 3s infinite alternate}
+@keyframes twinkle{from{opacity:.2;transform:scale(.6)}to{opacity:1;transform:scale(1.4)}}
+.scene{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:25px;text-align:center;opacity:0;visibility:hidden;transform:scale(1.08);transition:all 1s ease;z-index:2}
+.scene.active{opacity:1;visibility:visible;transform:scale(1)}
+.content{width:100%;max-width:850px;animation:contentAppear 1.2s ease}
+@keyframes contentAppear{from{opacity:0;transform:translateY(25px)}to{opacity:1;transform:translateY(0)}}
+.small{font-size:13px;letter-spacing:4px;text-transform:uppercase;opacity:.7;margin-bottom:20px}
+h1{font-family:'Cormorant Garamond',serif;font-size:clamp(55px,12vw,120px);font-weight:600;line-height:.9}
+h2{font-family:'Cormorant Garamond',serif;font-size:clamp(38px,7vw,75px);margin-bottom:20px}
+p{font-size:16px;line-height:1.8;opacity:.85}
+button{border:none;cursor:pointer;font-family:Poppins,sans-serif}
+.enter-btn{margin-top:35px;padding:15px 35px;border-radius:50px;color:white;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.3);backdrop-filter:blur(10px);letter-spacing:2px;transition:.4s}
+.enter-btn:hover{background:rgba(255,255,255,.2);transform:translateY(-3px);box-shadow:0 10px 40px rgba(255,70,150,.3)}
+.big-heart{font-size:80px;margin-bottom:20px;animation:heartbeat 1.5s infinite}
+@keyframes heartbeat{0%,100%{transform:scale(1)}50%{transform:scale(1.18)}}
+.names{display:flex;justify-content:center;align-items:center;gap:25px;margin:30px 0}
+.name{font-family:'Cormorant Garamond',serif;font-size:clamp(45px,8vw,90px)}
+.x{font-size:30px;opacity:.5}
+.letter{max-width:700px;margin:auto;padding:35px;border-radius:20px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);backdrop-filter:blur(15px);box-shadow:0 20px 80px rgba(0,0,0,.35);text-align:left}
+.letter-title{font-family:'Cormorant Garamond',serif;font-size:35px;margin-bottom:20px}
+.signature{margin-top:25px;font-family:'Cormorant Garamond',serif;font-size:25px}
+.shayari-container{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:30px}
+.shayari{min-height:250px;display:flex;align-items:center;justify-content:center;padding:25px;border-radius:20px;background:linear-gradient(145deg,rgba(255,255,255,.10),rgba(255,255,255,.03));border:1px solid rgba(255,255,255,.15);backdrop-filter:blur(12px);transition:.5s;position:relative;overflow:hidden}
+.shayari::before{content:"♥";position:absolute;top:-15px;right:15px;font-size:80px;opacity:.04}
+.shayari:hover{transform:translateY(-8px);background:rgba(255,255,255,.12);box-shadow:0 20px 50px rgba(255,60,150,.15)}
+.shayari p{font-family:'Cormorant Garamond',serif;font-size:21px;line-height:1.6;opacity:.95}
+.proposal-heart{font-size:100px;animation:heartbeat 1.4s infinite}
+.proposal-text{font-family:'Cormorant Garamond',serif;font-size:clamp(45px,8vw,85px);margin:15px 0}
+.buttons{display:flex;justify-content:center;gap:20px;margin-top:30px}
+.yes-btn,.no-btn{padding:14px 35px;border-radius:50px;font-size:16px;transition:.3s}
+.yes-btn{color:white;background:linear-gradient(135deg,#ff3d81,#ff5e9b);box-shadow:0 10px 30px rgba(255,60,130,.3)}
+.yes-btn:hover{transform:scale(1.08)}
+.no-btn{color:white;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.2)}
+.success-heart{font-size:120px;animation:heartbeat 1s infinite}
+.success h2{font-size:clamp(45px,8vw,85px)}
+.final-message{margin-top:20px;font-family:'Cormorant Garamond',serif;font-size:28px}
+.music-btn{position:fixed;bottom:25px;right:25px;width:50px;height:50px;border-radius:50%;background:rgba(255,255,255,.08);color:white;border:1px solid rgba(255,255,255,.2);backdrop-filter:blur(10px);z-index:20;font-size:20px;transition:.3s}
+.music-btn:hover{transform:scale(1.1)}
+.next-btn{margin-top:30px;padding:12px 28px;background:transparent;color:white;border:1px solid rgba(255,255,255,.25);border-radius:50px;opacity:.8;transition:.3s}
+.next-btn:hover{background:rgba(255,255,255,.1)}
+.floating-heart{position:fixed;bottom:-50px;font-size:18px;opacity:.5;pointer-events:none;animation:floatHeart linear forwards;z-index:1}
+@keyframes floatHeart{0%{transform:translateY(0) rotate(0deg);opacity:0}10%{opacity:.7}100%{transform:translateY(-110vh) rotate(360deg);opacity:0}}
+@media(max-width:700px){.shayari-container{grid-template-columns:1fr;max-height:60vh;overflow-y:auto;padding:5px}.shayari{min-height:180px}.shayari p{font-size:19px}.letter{padding:25px;max-height:65vh;overflow-y:auto}.names{gap:12px}.x{font-size:20px}.buttons{gap:12px}.yes-btn,.no-btn{padding:12px 25px}}
 </style>
 </head>
 <body>
-<div class="app">
-<div class="hearts" id="hearts"></div>
-<div class="progress"><span id="pageNumber">01 / 06</span><div class="dots"><span class="dot active"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></div></div>
-<div class="card" id="card"></div>
-<div class="credit"><span>♡</span>Made with love</div>
+<div class="stars" id="stars"></div>
+
+<section class="scene active" id="scene1"><div class="content">
+<div class="small">A little something from my heart</div>
+<div class="big-heart">❤️</div>
+<h1>Hey, Niti</h1>
+<p>I made something special for you.</p>
+<button class="enter-btn" onclick="nextScene(2)">ENTER MY HEART</button>
+</div></section>
+
+<section class="scene" id="scene2"><div class="content">
+<div class="small">There are two names</div>
+<div class="names"><div class="name">Rishabh</div><div class="x">×</div><div class="name">Niti</div></div>
+<p>And maybe... one beautiful story waiting to begin.</p>
+<button class="next-btn" onclick="nextScene(3)">Continue →</button>
+</div></section>
+
+<section class="scene" id="scene3"><div class="content">
+<div class="small">A letter for you</div>
+<div class="letter">
+<div class="letter-title">Dear Niti,</div>
+<p>I don't really know when it happened. Maybe it was one conversation, one smile, or simply the way you became someone I started thinking about more than I expected.</p>
+<br>
+<p>I just know that talking to you feels different. Somehow, you make ordinary moments feel special.</p>
+<br>
+<p>I don't want to make this complicated. I just wanted to be honest about what my heart feels.</p>
+<div class="signature">— Rishabh ❤️</div>
 </div>
+<button class="next-btn" onclick="nextScene(4)">There is more...</button>
+</div></section>
+
+<section class="scene" id="scene4"><div class="content">
+<div class="small">Some words from my heart</div>
+<h2>For You, Niti</h2>
+<p>Because sometimes feelings are easier to write than say.</p>
+<div class="shayari-container">
+<div class="shayari"><p>"Tere naam se hi<br>meri har khushi judi hai,<br>tu paas ho ya door,<br>meri duniya bas tujhse hi bani hai."</p></div>
+<div class="shayari"><p>"Na chaand chahiye,<br>na sitaron ki farmaish hai,<br>bas Niti, tera saath ho,<br>itni si meri khwahish hai."</p></div>
+<div class="shayari"><p>"Kuch toh baat hai teri muskurahat mein,<br>jo dil ko sukoon milta hai,<br>pata nahi kab hua,<br>par dil ko tujhse pyaar sa lagta hai."</p></div>
+</div>
+<button class="next-btn" onclick="nextScene(5)">One last thing...</button>
+</div></section>
+
+<section class="scene" id="scene5"><div class="content">
+<div class="proposal-heart">❤️</div>
+<div class="small">So, Niti...</div>
+<div class="proposal-text">Will you be mine?</div>
+<p>No pressure. Just a question from my heart.</p>
+<div class="buttons">
+<button class="yes-btn" onclick="sayYes()">YES ❤️</button>
+<button class="no-btn" id="noBtn">NO</button>
+</div>
+</div></section>
+
+<section class="scene" id="scene6"><div class="content success">
+<div class="success-heart">💖</div>
+<div class="small">You just made my day</div>
+<h2>You said YES!</h2>
+<p class="final-message">You made my heart really happy, Niti.</p>
+<p style="margin-top:20px;">Maybe this is the beginning of something beautiful. ❤️</p>
+</div></section>
+
+<button class="music-btn" id="musicBtn">♫</button>
+
 <script>
-const pages=[
-{small:"Hey... I have something to ask you... ❤️",title:"Can I ask you<br>something?",emoji:"💗",buttons:[["Yes ❤️","next"],["Of course 🥺","next"]]},
-{small:"Okay... let's start with something simple...",title:"Do you enjoy<br>talking to me?",emoji:"💬",buttons:[["Yes ❤️","next"],["Obviously 🥺","next"]]},
-{small:"Be honest with me...",title:"Do I make<br>you smile?",emoji:"😊",buttons:[["Yes ❤️","next"],["Always 🥺","next"]]},
-{small:"One last little question...",title:"Do you think<br>we are special?",emoji:"✨",buttons:[["Yes ❤️","next"],["Definitely 🥺","next"]]},
-{small:"Ek secret batana? 🤫",title:"Will you stay<br>with me?",emoji:"💞",buttons:[["Yes ❤️","next"],["Of Course 🥺","next"],["No 🙈","run"]]}
-];
-let currentPage=0;
-const card=document.getElementById("card"),pageNumber=document.getElementById("pageNumber"),dots=document.querySelectorAll(".dot");
-function showPage(index){
- currentPage=index;card.style.animation="none";void card.offsetWidth;card.style.animation="cardIn .7s ease";
- pageNumber.innerText=String(index+1).padStart(2,"0")+" / 06";
- dots.forEach((d,i)=>d.classList.toggle("active",i<=index));
- if(index>=pages.length){showFinal();return}
- const p=pages[index];
- card.innerHTML=`<div class="small-text">${p.small}</div><div class="question">${p.title}</div><div class="emoji">${p.emoji}</div><div class="buttons">${p.buttons.map(b=>`<button class="${b[1]==="run"?"outline":""}" onclick="${b[1]==="next"?"nextPage()":"runAway(this)"}">${b[0]}</button>`).join("")}</div>`;
+function nextScene(number){
+document.querySelectorAll(".scene").forEach(scene=>scene.classList.remove("active"));
+document.getElementById("scene"+number).classList.add("active");
 }
-function nextPage(){createBurst();setTimeout(()=>showPage(currentPage+1),250)}
-function runAway(button){
- button.style.position="fixed";
- button.style.left=Math.max(20,Math.random()*(innerWidth-button.offsetWidth-20))+"px";
- button.style.top=Math.max(20,Math.random()*(innerHeight-button.offsetHeight-20))+"px";
- button.innerText=["Are you sure? 🥺","Really? 😭","Think again ❤️","Nope 😌","Try again 😏"][Math.floor(Math.random()*5)];
+
+const stars=document.getElementById("stars");
+for(let i=0;i<100;i++){
+const star=document.createElement("div");
+star.classList.add("star");
+star.style.left=Math.random()*100+"%";
+star.style.top=Math.random()*100+"%";
+star.style.animationDelay=Math.random()*3+"s";
+stars.appendChild(star);
 }
-function showFinal(){
- pageNumber.innerText="06 / 06";dots.forEach(d=>d.classList.add("active"));
- card.innerHTML=`<div class="emoji">💕✨</div><div class="final-title">I knew it... ❤️</div><div class="final-text">From random conversations...<br>...to becoming someone incredibly special.<br><br>Our story starts here. ❤️✨</div><div class="music">♪ Playing for us ♪</div>`;
- for(let i=0;i<25;i++)setTimeout(createBurst,i*80);
-}
-const hearts=document.getElementById("hearts");
+
 function createHeart(){
- const h=document.createElement("div");h.className="heart";h.innerHTML=Math.random()>.3?"♥":"♡";
- h.style.left=Math.random()*100+"%";h.style.fontSize=12+Math.random()*25+"px";h.style.animationDuration=6+Math.random()*8+"s";
- h.style.setProperty("--move",Math.random()*180-90+"px");hearts.appendChild(h);setTimeout(()=>h.remove(),15000);
+const heart=document.createElement("div");
+heart.classList.add("floating-heart");
+heart.innerHTML=Math.random()>.5?"♡":"♥";
+heart.style.left=Math.random()*100+"%";
+heart.style.fontSize=(12+Math.random()*20)+"px";
+heart.style.animationDuration=(5+Math.random()*6)+"s";
+document.body.appendChild(heart);
+setTimeout(()=>heart.remove(),12000);
 }
-setInterval(createHeart,450);
-function createBurst(){
- for(let i=0;i<8;i++){
-  const h=document.createElement("div");h.innerHTML="♥";h.style.cssText="position:fixed;left:50%;top:50%;z-index:100;color:#ff7182;font-size:"+(14+Math.random()*18)+"px;pointer-events:none";
-  const a=Math.random()*Math.PI*2,d=70+Math.random()*120,x=Math.cos(a)*d,y=Math.sin(a)*d;
-  h.animate([{transform:"translate(-50%,-50%) scale(0)",opacity:1},{transform:`translate(calc(-50% + ${x}px),calc(-50% + ${y}px)) scale(1.4)`,opacity:0}],{duration:900,easing:"ease-out"});
-  document.body.appendChild(h);setTimeout(()=>h.remove(),950);
- }
+setInterval(createHeart,900);
+
+const audio=new Audio("music.mp3");
+audio.loop=true;
+let musicPlaying=false;
+const musicBtn=document.getElementById("musicBtn");
+
+musicBtn.addEventListener("click",()=>{
+if(!musicPlaying){
+audio.play().catch(()=>{});
+musicPlaying=true;
+musicBtn.innerHTML="❚❚";
+}else{
+audio.pause();
+musicPlaying=false;
+musicBtn.innerHTML="♫";
 }
-showPage(0);
+});
+
+const noBtn=document.getElementById("noBtn");
+noBtn.addEventListener("mouseenter",moveNoButton);
+noBtn.addEventListener("touchstart",moveNoButton);
+
+function moveNoButton(){
+const maxX=Math.max(10,window.innerWidth-120);
+const maxY=Math.max(10,window.innerHeight-80);
+noBtn.style.position="fixed";
+noBtn.style.left=Math.random()*maxX+"px";
+noBtn.style.top=Math.random()*maxY+"px";
+}
+
+function sayYes(){
+nextScene(6);
+for(let i=0;i<25;i++){
+setTimeout(()=>createHeart(),i*100);
+}
+}
 </script>
 </body>
 </html>
